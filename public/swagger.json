@@ -1,0 +1,19 @@
+{
+    "openapi": "3.0.1",
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Local Server"
+        }
+    ],
+    "info": {
+        "version": "0.0.1",
+        "title": "infra-did-comm-ws-server",
+        "description": "Websocket server for Infra DID communication",
+        "license": {
+            "name": "UNLICENSED"
+        }
+    },
+    "paths": {},
+    "components": {}
+}
