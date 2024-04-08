@@ -23,13 +23,13 @@ services:
         - REDIS_PORT=${REDIS_PORT}
         - HTTP_USER=${REDIS_COMMANDER_USER}
         - HTTP_PASSWORD=${REDIS_COMMANDER_PASSWORD}
-    # nest:
-    #     container_name: nest
-    #     restart: always
-    #     build:
-    #         dockerfile: Dockerfile
-    #         context: ./
-    #     env_file: 
-    #         - .env
-    #     ports:
-    #         - ${PORT}:8000
+    nest:
+        container_name: nest
+        restart: always
+        build:
+            dockerfile: Dockerfile
+            context: ./
+        env_file: 
+            - .env
+        ports:
+            - ${PORT}:${PORT}
