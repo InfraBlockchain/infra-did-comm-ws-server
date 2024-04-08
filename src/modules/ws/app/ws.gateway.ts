@@ -36,6 +36,7 @@ export class WsGateway {
     @SubscribeMessage("message")
     handleMessage(@MessageBody() data: WsMessageBodyDto): WsMessageBodyDto {
         const { to, m } = data;
+        logger.info(`[message] to: ${to}, m: ${m}`);
         this.server.to(to).emit("message", m);
         return data;
     }
