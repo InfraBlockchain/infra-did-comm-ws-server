@@ -51,6 +51,7 @@ const logFormat = printf(info => {
 });
 
 const loggerOptions: LoggerOptions = {
+    level: "info",
     format: format.combine(
         json(),
         timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
@@ -60,7 +61,6 @@ const loggerOptions: LoggerOptions = {
     ),
     transports: [
         new transports.Console({
-            level: "debug",
             handleExceptions: true
         })
     ],

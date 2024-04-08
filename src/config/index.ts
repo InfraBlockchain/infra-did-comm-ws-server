@@ -4,8 +4,9 @@ _config({ path: __dirname + "/../../.env" });
 (process as any).send = process.send || function () {};
 
 import JwtModuleConfig from "./modules/jwt";
+import RedisModuleConfig from "./modules/redis";
 
-export { JwtModuleConfig };
+export { JwtModuleConfig, RedisModuleConfig };
 
 export const config = {
     // Base

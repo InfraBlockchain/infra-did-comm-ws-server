@@ -2,21 +2,16 @@ import { MiddlewareConsumer, Module } from "@nestjs/common";
 import { CqrsModule } from "@nestjs/cqrs";
 import { JwtModule } from "@src/shared/modules";
 
-import { TemplateController } from "./app/template.controller";
-import { TemplateService } from "./app/template.service";
+import { WsGateway } from "./app/ws.gateway";
 import { CommandHandlers } from "./domain/commands/handlers";
 import { QueryHandlers } from "./domain/queries/handlers";
 
 @Module({
     imports: [CqrsModule, JwtModule],
-    providers: [
-        { provide: "TemplateService", useClass: TemplateService },
-        ...CommandHandlers,
-        ...QueryHandlers
-    ],
-    controllers: [TemplateController]
+    providers: [WsGateway, ...CommandHandlers, ...QueryHandlers],
+    controllers: []
 })
-export class TemplateModule {
+export class WsModule {
     configure(consumer: MiddlewareConsumer) {
         const {} = consumer;
     }

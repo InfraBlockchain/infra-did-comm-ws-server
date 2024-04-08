@@ -13,6 +13,7 @@ import morgan from "morgan";
 import { AppModule } from "./app.module";
 import { BadRequestExceptionFilter } from "./common/filters/bad-request-exception.filter";
 import { TimeoutInterceptor } from "./common/interceptors/timeout.interceptor";
+import { RedisIoAdapter } from "./config/modules/redis/redis-io.adapter";
 import { errorStream, logger } from "./config/modules/winston";
 
 async function bootstrap() {
@@ -29,6 +30,11 @@ async function bootstrap() {
         app.use(rTracer.expressMiddleware());
 
         app.use(json({ limit: "50mb" }));
+
+        // IO adapter init using socketIO
+        const redisIoAdapter = new RedisIoAdapter(app);
+        await redisIoAdapter.connectToRedis();
+        app.useWebSocketAdapter(redisIoAdapter);
 
         // Swagger
         const swagger = JSON.parse(

@@ -2,12 +2,13 @@ import { LoggingInterceptor } from "@common/interceptors/logging.interceptor";
 import { Module } from "@nestjs/common";
 import { APP_FILTER, APP_INTERCEPTOR } from "@nestjs/core";
 
+import { AppController } from "./app.controller";
 import { BadRequestExceptionFilter } from "./common/filters/bad-request-exception.filter";
-import { TemplateModule } from "./modules/template/template.module";
+import { WsModule } from "./modules/ws/ws.module";
 
 @Module({
-    imports: [TemplateModule],
-    controllers: [],
+    imports: [WsModule],
+    controllers: [AppController],
     providers: [
         {
             provide: APP_INTERCEPTOR,
